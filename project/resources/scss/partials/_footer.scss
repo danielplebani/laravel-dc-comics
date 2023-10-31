@@ -1,0 +1,52 @@
+@use "./color" as *;
+
+#main_body {
+    background-image: url(../img/footer-bg.jpg);
+    padding: 0 calc(35% / 2);
+
+    .logo {
+        background-image: url(../img/dc-logo-bg.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 450px;
+    }
+
+    a {
+        color: gray;
+        text-decoration: none;
+        font-size: x-small;
+        margin-bottom: 3px;
+    }
+}
+
+
+#footer {
+    background-color: $dc_dark_soft;
+    padding: 0 calc(35% / 2);
+
+    button {
+        background-color: transparent;
+        color: white;
+        border-color: $dc_primary;
+        padding: 10px;
+        font-size: small;
+    }
+
+    .clickButton {
+        background-color: rgba(255, 255, 255, 0.044);
+        color: $dc_primary;
+        border: 2px solid $dc_primary;
+    }
+
+    span {
+        color: $dc_primary;
+        font-size: large;
+        font-family: "Roboto Condensed", sans-serif;
+        align-self: flex-end;
+    }
+
+    img {
+        width: 30px;
+        aspect-ratio: 1 / 1;
+    }
+}
