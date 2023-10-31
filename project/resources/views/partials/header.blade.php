@@ -20,7 +20,7 @@
         <div style="height: 100%;" class="col d-flex justify-content-end">
             <a class="nav-item nav-link {{ Route::currentRouteName() === 'characters' ? 'active' : '' }}" href="{{route('characters')}}">CHARACTERS</a>
 
-            <a class="nav-item nav-link {{ Route::currentRouteName() === 'comics' ? 'active' : '' }}" href="{{route('comics')}}">COMICS</a>
+            <a class="nav-item nav-link {{ request()->is('comics*') ? 'active' : '' }}" href="/comics">COMICS</a>
 
             <a class="nav-item nav-link {{ Route::currentRouteName() === 'movies' ? 'active' : '' }}" href="{{route('movies')}}">MOVIES</a>
 

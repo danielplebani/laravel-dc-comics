@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ComicController extends Controller
 {
@@ -12,7 +14,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.index", ['comics' => Comic::all()]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.create");
     }
 
     /**
