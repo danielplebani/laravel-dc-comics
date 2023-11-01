@@ -7,10 +7,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarID">
                 <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" aria-current="page" href="#">element</a>
-                    <a class="nav-link" aria-current="page" href="#">element</a>
-                    <a class="nav-link" aria-current="page" href="#">element</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" aria-current="page" href="/comics">Comics</a>
                     <a class="nav-link" aria-current="page" href="#">element</a>
                 </div>
             </div>
