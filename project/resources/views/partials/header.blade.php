@@ -14,13 +14,13 @@
 <header id="app_header">
     <div class="d-flex justify-content-between align-items-center py-2">
         <div class="col-3">
-            <img src="{{ Vite::asset('resources/img/dc-logo.png')}}" alt="logo">
+            <a href="/"><img src="{{ Vite::asset('resources/img/dc-logo.png')}}" alt="logo"></a>
         </div>
 
         <div style="height: 100%;" class="col d-flex justify-content-end">
             <a class="nav-item nav-link {{ Route::currentRouteName() === 'characters' ? 'active' : '' }}" href="{{route('characters')}}">CHARACTERS</a>
 
-            <a class="nav-item nav-link {{ request()->is('comics*') ? 'active' : '' }}" href="/comics">COMICS</a>
+            <a class="nav-item nav-link {{ Route::currentRouteName() === 'comics.index' ? 'active' : '' }}" href="{{route('comics.index')}}">COMICS</a>
 
             <a class="nav-item nav-link {{ Route::currentRouteName() === 'movies' ? 'active' : '' }}" href="{{route('movies')}}">MOVIES</a>
 

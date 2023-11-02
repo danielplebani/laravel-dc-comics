@@ -21,6 +21,7 @@ Route::resource('comics', ComicController::class);
 
 
 
+
 Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::get('/collectibles', function () {

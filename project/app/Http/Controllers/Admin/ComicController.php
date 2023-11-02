@@ -30,7 +30,25 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $new_comic = new Comic();
+
+        if ($request->has('thumb')) {
+            $file_path = Storage::put('comics_images', $request->thumb);
+            $new_comic->thumb = $file_path;
+        }
+
+        $new_comic->title = $request->title;
+        $new_comic->price = $request->price;
+        $new_comic->description = $request->description;
+        $new_comic->series = $request->series;
+        $new_comic->type = $request->type;
+        $new_comic->writers = $request->writers;
+        $new_comic->artists = $request->artists;
+        $new_comic->sale_date = $request->sale_date;
+
+        $new_comic->save();
+
+        return to_route('comics.show');
     }
 
     /**
@@ -38,7 +56,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        //
+        return view('admin.comics.show', compact('comic'));
     }
 
     /**
@@ -46,7 +64,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -54,7 +72,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+
+        $data = $request->all();
+
+        if ($request->has('thumb') && $comic->thumb) {
+
+            Storage::delete($comic->thumb);
+
+            $newImageFile = $request->thumb;
+            $path = Storage::put('sabers_images', $newImageFile);
+            $data['thumb'] = $path;
+        }
+
+
+        $comic->update($data);
+        return to_route('comics.show', $comic);
     }
 
     /**

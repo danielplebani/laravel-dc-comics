@@ -9,20 +9,19 @@
             </div>
 
             <div class="films pt-5 pb-3 d-flex flex-column">
-                <div class="container d-flex flex-wrap justify-content-around">
-
+                <div class="container d-flex flex-wrap justify-content-center gap-3">
                     @foreach ($comics as $comic)
                         <div class="product">
-                            <a href="{{Route('comic')}}"><img src="{{$comic->thumb}}"></a>
+                            <a href="{{ Route('comics.show', ['comic' => $comic->id]) }}"><img src="{{ $comic->thumb }}" alt="comic-thumb"></a>
                             <a>
-                                <p>{{$comic->title}}</p>
+                                <p>{{ $comic->title }}</p>
                             </a>
                         </div>
                     @endforeach
-
-
-                    <a href="comics/create"><button><strong>LOAD MORE</strong></button></a>
                 </div>
+
+                <a href="comics/create" class="text-center"><button><strong>LOAD MORE</strong></button></a>
+
             </div>
         </section>
 
