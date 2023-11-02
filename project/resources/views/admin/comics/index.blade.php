@@ -12,7 +12,8 @@
                 <div class="container d-flex flex-wrap justify-content-center gap-3">
                     @foreach ($comics as $comic)
                         <div class="product">
-                            <a href="{{ Route('comics.show', ['comic' => $comic->id]) }}"><img src="{{ $comic->thumb }}" alt="comic-thumb"></a>
+                            <a href="{{ Route('comics.show', ['comic' => $comic->id]) }}">
+                                <img src="{{ $comic->thumb }}" alt="comic-thumb"></a>
                             <a>
                                 <p>{{ $comic->title }}</p>
                             </a>
@@ -20,7 +21,7 @@
                     @endforeach
                 </div>
 
-                <a href="comics/create" class="text-center"><button><strong>LOAD MORE</strong></button></a>
+                <a href="comics/create" class="text-center"><button><strong>CREATE A NEW COMIC</strong></button></a>
 
             </div>
         </section>

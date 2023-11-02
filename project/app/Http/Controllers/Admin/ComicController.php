@@ -28,7 +28,7 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Comic $comic)
     {
         $new_comic = new Comic();
 
@@ -48,7 +48,7 @@ class ComicController extends Controller
 
         $new_comic->save();
 
-        return to_route('comics.show');
+        return to_route('comics.index');
     }
 
     /**
