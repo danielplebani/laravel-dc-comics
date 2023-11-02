@@ -16,9 +16,8 @@ use App\Http\Controllers\Guest\PageController;
 |
 */
 
-Route::resource('/comics', ComicController::class);
+Route::resource('comics', ComicController::class);
 
-Route::get('comics/{comic}', 'ComicController@show')->name('comics.show');
 
 
 

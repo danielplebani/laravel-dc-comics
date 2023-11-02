@@ -21,7 +21,7 @@
                     @endforeach
 
 
-                    <button><strong>LOAD MORE</strong></button>
+                    <a href="comics/create"><button><strong>LOAD MORE</strong></button></a>
                 </div>
             </div>
         </section>

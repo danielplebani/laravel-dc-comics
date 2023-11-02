@@ -14,7 +14,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        return view("admin.index", ['comics' => Comic::all()]);
+        return view("admin.comics.index", ['comics' => Comic::all()]);
     }
 
     /**
@@ -22,7 +22,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view("admin.create");
+        return view("admin.comics.create");
     }
 
     /**
@@ -30,21 +30,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $file_path = null;
-        if ($request->has('thumb')) {
-            $file_path =  Storage::put('sabers_images', $request->thumb);
-        }
-        //dd($file_path);
-
-
-        $NewComic = new Comic();
-        $NewComic->name = $request->name;
-        $NewComic->price = $request->price;
-        $NewComic->thumb = $file_path;
-        $NewComic->save();
-
-        // POST/REDIRECT/GET
-        return view('admin.create');
+        //
     }
 
     /**
@@ -52,7 +38,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        return view("admin.show", compact("comic"));
+        //
     }
 
     /**
