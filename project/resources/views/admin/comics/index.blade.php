@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('page-title', 'comics')
+
 @section('content')
     <main id="app_main">
 

@@ -4,8 +4,20 @@
 
 @section('content')
     <div class="container text-center py-5">
-        <h1>Comic Details</h1>
-        <a href="{{route('comics.edit', ['comic' => $comic->id])}}" class="text-center"><button id="edit_button"><strong>EDIT</strong></button></a>
+        <h1>Comic Info</h1>
+
+        <div class="d-flex justify-content-center gap-1">
+            <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="text-center">
+                <button class="edit_button"><strong>EDIT</strong></button>
+            </a>
+
+            <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="delete_button" class="text-center"><strong>DELETE</strong></button>
+            </form>
+        </div>
+
 
         <div style="width: 30%; margin:auto;" class="card text-center shadow">
             <div class="card-body">
