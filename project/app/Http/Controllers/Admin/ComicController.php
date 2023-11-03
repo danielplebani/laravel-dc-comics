@@ -28,7 +28,7 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Comic $comic)
+    public function store(Request $request)
     {
         $new_comic = new Comic();
 
@@ -94,10 +94,6 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        if (!is_null($comic->thumb)) {
-            Storage::delete($comic->thumb);
-        }
-
         $comic->delete();
 
         return to_route('comics.index')->with('message', 'Welldone! Comic deleted successfully!');
