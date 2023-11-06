@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -28,29 +29,18 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
         //$data = $request->all();
 
-        $validated = $request->validate([
-            'title' => 'required|min:2|max:100',
-            'thumb' => 'required',
-            'price' => 'required',
-        ], 
-        [
-            'title.required' => 'Il titolo è obbligatorio!',
-            'title.min' => 'Il titolo deve avere almeno 2 caratteri!',
-            'title.max' => 'Il titolo può avere massimo 100 caratteri!',
-            'thumb.required' => "L'immagine è obbligatoria!",
-            'price.required' => 'Il prezzo è obbligatorio!',
-        ]);
+        $validated = $request->validated();
 
         if ($request->has('thumb')) {
             $file_path = Storage::put('comics_images', $request->thumb);
             $validated['thumb'] = $file_path;
         }
 
-        $newComic = Comic::create($validated);
+        Comic::create($validated);
 
         return to_route('comics.index');
     }
@@ -74,16 +64,12 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
 
         //$data = $request->all();
 
-        $validated = $request->validate([
-            'title' => 'required|min:2|max:100',
-            'thumb' => 'required',
-            'price' => 'required',
-        ]);
+        $validated = $request->validated();
 
         if ($request->has('thumb') && $comic->thumb) {
 

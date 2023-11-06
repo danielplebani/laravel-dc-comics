@@ -37,7 +37,7 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <input type="text" class="form-control" name="description" id="description" aria-describedby="helpId"
-                    placeholder="Acolyte is a action movies with...">
+                    placeholder="Acolyte is a action movies with..." value="{{ old('description') }}">
                 <small id="descriptionHelper" class="form-text text-muted">Type the description here</small>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="mb-3">
                 <label for="thumb" class="form-label">Choose file</label>
                 <input type="file" class="form-control" name="thumb" id="thumb" placeholder=""
-                    aria-describedby="thumb_helper" value="{{ old('thumb') }}">
+                    aria-describedby="thumb_helper">
                 <div id="thumb_helper" class="form-text">
                     <i class="fa-solid fa-circle-exclamation"></i>
                     Upload an image for the current product
@@ -75,7 +75,7 @@
             </button>
         </form>
 
-        <div style="margin-top: 3.5rem" class="form-text">
+        <div style="margin-top: 3rem" class="form-text">
             <i class="fa-solid fa-circle-exclamation"></i>=required field
         </div>
 
