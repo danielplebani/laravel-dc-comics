@@ -30,23 +30,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $new_comic = new Comic();
+        //$data = $request->all();
+
+        $validated = $request->validate([
+            'title' => 'required|min:2|max:100',
+            'thumb' => 'required',
+            'price' => 'required',
+        ]);
 
         if ($request->has('thumb')) {
             $file_path = Storage::put('comics_images', $request->thumb);
-            $new_comic->thumb = $file_path;
+            $validated['thumb'] = $file_path;
         }
 
-        $new_comic->title = $request->title;
-        $new_comic->price = $request->price;
-        $new_comic->description = $request->description;
-        $new_comic->series = $request->series;
-        $new_comic->type = $request->type;
-        $new_comic->writers = $request->writers;
-        $new_comic->artists = $request->artists;
-        $new_comic->sale_date = $request->sale_date;
-
-        $new_comic->save();
+        $newComic = Comic::create($validated);
 
         return to_route('comics.index');
     }
@@ -73,7 +70,13 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
 
-        $data = $request->all();
+        //$data = $request->all();
+
+        $validated = $request->validate([
+            'title' => 'required|min:2|max:100',
+            'thumb' => 'required',
+            'price' => 'required',
+        ]);
 
         if ($request->has('thumb') && $comic->thumb) {
 
@@ -81,11 +84,11 @@ class ComicController extends Controller
 
             $newImageFile = $request->thumb;
             $path = Storage::put('comics_images', $newImageFile);
-            $data['thumb'] = $path;
+            $validated['thumb'] = $path;
         }
 
 
-        $comic->update($data);
+        $comic->update($validated);
         return to_route('comics.show', $comic);
     }
 
