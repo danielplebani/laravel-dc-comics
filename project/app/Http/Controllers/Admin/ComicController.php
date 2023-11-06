@@ -36,6 +36,13 @@ class ComicController extends Controller
             'title' => 'required|min:2|max:100',
             'thumb' => 'required',
             'price' => 'required',
+        ], 
+        [
+            'title.required' => 'Il titolo è obbligatorio!',
+            'title.min' => 'Il titolo deve avere almeno 2 caratteri!',
+            'title.max' => 'Il titolo può avere massimo 100 caratteri!',
+            'thumb.required' => "L'immagine è obbligatoria!",
+            'price.required' => 'Il prezzo è obbligatorio!',
         ]);
 
         if ($request->has('thumb')) {
